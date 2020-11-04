@@ -221,7 +221,7 @@
         
         <!--Page Heading-->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Registration</h1>
+        <h1 class="h3 mb-0 text-gray-800">DISKON</h1>
         </div>
 
         <!--conten row-->
@@ -235,7 +235,7 @@
         <div class="card shadow mb-4">
         <!--card header-dropdown-->
         <div class="card-header py-3 d-flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Registration</h6>
+        <h6 class="m-0 font-weight-bold text-primary">DISKON</h6>
         <div class="dropdown no-arrow">
         <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -246,64 +246,26 @@
         <div class="card-body">
         <form action="">
         <div class="form-group">
-        <input type="text" class="form-control-user" id="name" name="name" placeholder="Nama Anda" required lenght="100">
+        <input type="text" class="form-control-user" id="name" name="name" placeholder="Harga" required lenght="100">
         </div>
         <div class="form-group">
-        <input type="text" class="form-control-user" id="subject" name="subject" placeholder="Username Anda" required>
+        <input type="text" class="form-control-user" id="subject" name="subject" placeholder="Diskon" required>
         </div>
-        <div class="form-group">
-        <input type="email" class="form-control-user" id="email" name="email" placeholder="Email Anda" required>
-        </div>
-        <div class="form-group">
-        <input type="password" class="form-control-user" id="password" name="password" placeholder="Password Anda" required>
-        </div>
-        <div class="form-group">
-        <input type="radio" name="kelamin" id="kelamin" value="Laki-laki">Laki-Laki
-        <input type="radio" name="kelamin" id="kelamin" value="Perempuan">Perempuan
-        </div>
-        <div class="form-group">
-        <select name="agama" id="agama">
-        <option value="Islam">Islam</option>
-        <option value="Kristen">Kristen</option>
-        <option value="Katolik">Katolik</option>
-        <option value="Hindu">Hindu</option>
-        <option value="Budha">Budha</option>
-        <option value="Konghuchu">Konghuchu</option>
-        </select>
-        </div>
-        <div class="form-group">
-        <textarea name="biografi" id="biografi" cols="30" rows="10"></textarea>
-        </div>
+        
         <button type="submit" class="btn btn-success" name="submit">Tambah</button>
         <?php
-        $name = @$_GET['name'];
-        $subject = @$_GET['subject'];
-        $email = @$_GET['email'];
-        $password=@$_GET['password'];
-        $kelamin=@$_GET['kelamin'];
-        $agama=@$_GET['agama'];
-        $biografi=@$_GET['biografi'];
-        if ($name){
-          echo "<br><br><strong>Nama:</strong>{$name}<br>";
+        $harga = @$_GET['name'];
+        $diskon = @$_GET['subject'];
+        
+        
+        error_reporting (E_ALL ^ E_NOTICE);
+        $harga =$_GET['name'];
+        $diskon =$_GET['subject'];
+        function diskon($diskon,$harga){
+          return ($diskon/100)*$harga;
         }
-        if ($subject){
-          echo "<strong>Subject:</strong>{$subject}<br>";
-        }
-        if ($email){
-          echo "<strong>Email:</strong>{$email}<br>";
-        }
-        if($password){
-          echo "<strong>Password:</strong>{$password}<br>";
-        }
-        if($kelamin){
-          echo "<strong>Kelamin:</strong>{$kelamin}<br>";
-        }
-        if($agama){
-          echo "<strong>Agama:</strong>{$agama}<br>";
-        }
-        if($biografi){
-          echo "<strong>Biografi:</strong>{$biografi}<br>";
-        }
+        echo "Diskon Anda adalah : " .diskon($diskon,$harga);
+        
         ?>
         </form>
         </div>
