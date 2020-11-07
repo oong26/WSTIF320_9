@@ -16,7 +16,7 @@
 <li class="nav-item active">
   <a class="nav-link" href="index.html">
     <i class="fas fa-fw fa-tachometer-alt"></i>
-    <span>Dashboard</span></a>
+    <span>HOME</span></a>
 </li>
 
 <!-- Divider -->
@@ -31,13 +31,15 @@
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
     <i class="fas fa-fw fa-cog"></i>
-    <span>Pages</span>
+    <span>MAHASISWA</span>
   </a>
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Form</h6>
-      <a class="collapse-item" href="registration.html">Registration</a>
-      <a class="collapse-item" href="contact.html">Contact Us</a>
+      <a class="collapse-item" href="index.php">Registration</a>
+      <a class="collapse-item" href="contact.php">Contact Us</a>
+      <a class="collapse-item" href="cekdata.php">Cek Data</a>
+      
     </div>
   </div>
 </li>
@@ -55,7 +57,7 @@
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
     <i class="fas fa-fw fa-folder"></i>
-    <span>Pages</span>
+    <span>DOSEN</span>
   </a>
   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
@@ -70,6 +72,18 @@
     </div>
   </div>
 </li>
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+    <i class="fas fa-fw fa-folder"></i>
+    <span>USER</span>
+    </a>
+    </li>
+  <li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+    <i class="fas fa-fw fa-folder"></i>
+    <span>CEK DATA</span>
+
+  </li>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

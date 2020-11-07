@@ -25,7 +25,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <?php include "./sidebar.php" ?>
+    <?php include"./sidebar.php" ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -216,63 +216,102 @@
         </nav>
         <!-- End of Topbar -->
 
-        <!--begin page content-->
+        <!-- Begin Page Content -->
         <div class="container-fluid">
-        
-        <!--Page Heading-->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">DISKON</h1>
-        </div>
 
-        <!--conten row-->
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">DATA MAHASISWA</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+          </div>
 
-        <!--conten row-->
+          <!-- Content Row -->
+          <div class="row">
 
-        <div class="row">
-        
-        <!--area chart-->
-        <div class="col-xl-12 col-lg-7">
-        <div class="card shadow mb-4">
-        <!--card header-dropdown-->
-        <div class="card-header py-3 d-flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">DISKON</h6>
-        <div class="dropdown no-arrow">
-        <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-        </a>
+            <!-- Area Chart -->
+            <div class="col-xl-12 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <form action="berhasil.php" method="post">
+                      <div class="form-group">
+                          <input type="text"  name="nim" id="nim" class="form-control form-control-user" placeholder="NIM" required>
+                      </div>
+                      <div class="form-group">
+                          <input type="text" name="name" id="name" class="form-control form-control-user" placeholder="Nama Anda" required>
+                      </div>
+                      <div class="form-group">
+                          <input type="date" name="lahir" id="lahir" class="form-control form-control-user" placeholder="Tempat Tanggal Lahir" required>
+                      </div>
+                      <div class="form-group">
+                          <select name="agama" id="agama" class="form-control form-control-user">
+                            <option value="">Pilih Agama</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Katolik">Katolik</option>
+                            <option value="Protestan">Protestan</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Buddha">Buddha</option>
+                            <option value="Konghucu">Konghucu</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                          <input type="text" name="username" id="username" class="form-control form-control-user" placeholder="Username  Anda" required>
+                      </div>
+                      
+                      <div class="form-group">
+                          <input type="password" name="password" id="password" class="form-control form-control-user" placeholder="Password Anda" required>
+                      </div>
+                      
+                      <button type="submit" class="btn btn-success" name="submit">SAVE</button>
+                      <br>
+
+                      <!--FUNGSI PHP-->
+
+                      <?php
+                        $nim = @$_GET['nim'];
+                        $name = @$_GET['name'];
+                        $lahir = @$_GET['lahir'];
+                        $agama = @$_GET['agama'];
+                        $username =@$_GET['username'];
+                        $password = @$_GET['password'];
+
+                        if($nim){
+                          echo "<strong><br><br>NIM:</strong> {$nim} <br>";
+                        }
+                        if($name){
+                            echo "<strong>Nama:</strong> {$name} <br>";
+                        }
+                        if($lahir){
+                          echo "<strong>Tanggal Lahir:</strong> {$lahir} <br>";
+                        }
+                        if($agama){
+                          echo "<strong>Agama:</strong> {$agama} <br>";
+                        }
+                        if($username){
+                            echo "<strong>Username:</strong> {$username} <br>";
+                        }
+                        if($password){
+                          echo "<strong>Password:</strong> {$password} <br>";
+                        }
+                     
+                      ?>
+                      
+                  </form>
+                </div>
+              </div>
+            </div>
+
         </div>
-        </div>
-        <!--cardbody-->
-        <div class="card-body">
-        <form action="">
-        <div class="form-group">
-        <input type="text" class="form-control-user" id="name" name="name" placeholder="Harga" required lenght="100">
-        </div>
-        <div class="form-group">
-        <input type="text" class="form-control-user" id="subject" name="subject" placeholder="Diskon" required>
-        </div>
-        
-        <button type="submit" class="btn btn-success" name="submit">Tambah</button>
-        <?php
-        $harga = @$_GET['name'];
-        $diskon = @$_GET['subject'];
-        
-        
-        error_reporting (E_ALL ^ E_NOTICE);
-        $harga =$_GET['name'];
-        $diskon =$_GET['subject'];
-        function diskon($diskon,$harga){
-          return ($diskon/100)*$harga;
-        }
-        echo "Diskon Anda adalah : " .diskon($diskon,$harga);
-        
-        ?>
-        </form>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
+        <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
