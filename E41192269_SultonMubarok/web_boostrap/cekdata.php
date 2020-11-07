@@ -242,70 +242,67 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <form action="berhasil.php" method="post">
-                      <div class="form-group">
-                          <input type="text"  name="nim" id="nim" class="form-control form-control-user" placeholder="NIM" required>
-                      </div>
-                      <div class="form-group">
-                          <input type="text" name="name" id="name" class="form-control form-control-user" placeholder="Nama Anda" required>
-                      </div>
-                      <div class="form-group">
-                          <input type="date" name="lahir" id="lahir" class="form-control form-control-user" placeholder="Tempat Tanggal Lahir" required>
-                      </div>
-                      <div class="form-group">
-                          <select name="agama" id="agama" class="form-control form-control-user">
-                            <option value="">Pilih Agama</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Katolik">Katolik</option>
-                            <option value="Protestan">Protestan</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Buddha">Buddha</option>
-                            <option value="Konghucu">Konghucu</option>
-                          </select>
-                      </div>
-                      <div class="form-group">
-                          <input type="text" name="username" id="username" class="form-control form-control-user" placeholder="Username  Anda" required>
-                      </div>
-                      
-                      <div class="form-group">
-                          <input type="password" name="password" id="password" class="form-control form-control-user" placeholder="Password Anda" required>
-                      </div>
-                      
-                      <button type="submit" class="btn btn-success" name="submit">SAVE</button>
-                      <br>
+                <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="get">
+                  <div class="form-group">
+                      <label for="sel1">Pilih Mahasiswa:</label>
+                      <select class="form-control" name="nim">
+                          <?php
+                          include "koneksi.php";
+                          //Perintah sql untuk menampilkan semua data pada tabel jurusan
+                          $sql="select nim,nama from tb_mahasiswa";
 
-                      <!--FUNGSI PHP-->
+                          $hasil=mysqli_query($host,$sql);
+                          $no=0;
+                          while ($data = mysqli_fetch_array($hasil)) {
+                              $no++;
 
-                      <?php
-                        $nim = @$_GET['nim'];
-                        $name = @$_GET['name'];
-                        $lahir = @$_GET['lahir'];
-                        $agama = @$_GET['agama'];
-                        $username =@$_GET['username'];
-                        $password = @$_GET['password'];
+                              $ket="";
+                              if (isset($_GET['nim'])) {
+                                  $nim = trim($_GET['nim']);
 
-                        if($nim){
-                          echo "<strong><br><br>NIM:</strong> {$nim} <br>";
-                        }
-                        if($name){
-                            echo "<strong>Nama:</strong> {$name} <br>";
-                        }
-                        if($lahir){
-                          echo "<strong>Tanggal Lahir:</strong> {$lahir} <br>";
-                        }
-                        if($agama){
-                          echo "<strong>Agama:</strong> {$agama} <br>";
-                        }
-                        if($username){
-                            echo "<strong>Username:</strong> {$username} <br>";
-                        }
-                        if($password){
-                          echo "<strong>Password:</strong> {$password} <br>";
-                        }
-                     
-                      ?>
-                      
-                  </form>
+                                  if ($nim==$data['nim'])
+                                  {
+                                      $ket="selected";
+                                  }
+                              }
+                              ?>
+                              <option <?php echo $ket; ?> value="<?php echo $data['nim'];?>"><?php echo $data['nim'];?> - <?php echo $data['nama'];?></option>
+                              <?php
+                          }
+                          ?>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" class="btn btn-info" value="Pilih">
+                  </div>
+              </form>
+              <?php
+
+              if (isset($_GET['nim'])) {
+                  $nim=$_GET["nim"];
+
+                  $sql="select * from tb_mahasiswa where nim='$nim'";
+                  $hasil= mysqli_query($host,$sql);
+                  $data = mysqli_fetch_assoc($hasil);
+              }
+              ?>
+
+                  <div class="form-group">
+                      <label>nim:</label>
+                      <input type="text" name="nim" value="<?php echo $data['nim']; ?>" class="form-control" required />
+                  </div>
+                  <div class="form-group">
+                      <label>Nama:</label>
+                      <input type="text" name="nama" value="<?php echo $data['nama']; ?>" class="form-control"  required/>
+                  </div>
+                  <div class="form-group">
+                      <label>Tanggal Lahir:</label>
+                      <input type="date" name="ttl" value="<?php echo $data['ttl']; ?>" class="form-control" required/>
+                  </div>
+                  <div class="form-group">
+                      <label>Agama:</label>
+                      <input type="text" name="agama" value="<?php echo $data['agama']; ?>" class="form-control"required/>
+                  </div>
                 </div>
               </div>
             </div>

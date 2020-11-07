@@ -3,15 +3,16 @@ $nama = [
     'username'=>'sulton',
     'password'=>'123'
 ];
-if ($_POST['user']==$nama['username']){
-    if ($_POST['pass']==$nama['password']){
-        echo "naruto mati";
+if ($_POST['user']==$nama["username"]){
+    if ($_POST['pass']==$nama["password"]){
+        header ('location : index.php');
     }
     else {
-        echo "salah bos";
+        echo "Password Anda Salah";
     }}
     else {
-        echo "username salah";
+        echo "Username Anda salah";
     }
+    
 
 ?>
