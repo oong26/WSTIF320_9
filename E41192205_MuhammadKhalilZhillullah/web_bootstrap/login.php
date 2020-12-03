@@ -48,7 +48,14 @@
                       if($pesan == "gagal"){
                         ?>
                         <div class="alert alert-danger">
-                          <strong>Danger!</strong> Anda Gagal login. Coba cek email atau password Anda.
+                          <strong>Danger!</strong> Anda Gagal login. Akun tidak ditemukan.
+                        </div>
+                        <?php
+                      }
+                      if($pesan == "password-gagal"){
+                        ?>
+                        <div class="alert alert-danger">
+                          <strong>Danger!</strong> Anda Gagal login. Password yang anda masukkan salah.
                         </div>
                         <?php
                       }

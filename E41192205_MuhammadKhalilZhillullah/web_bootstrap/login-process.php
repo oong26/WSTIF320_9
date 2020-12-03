@@ -1,16 +1,19 @@
 <?php
+session_start();
+include 'koneksi.php';
+
 $email = $_POST['email'];
 $password = $_POST['password'];
-$email_saya = "mkhalil26122000@gmail.com";
-$password_saya = 12345678;
 
-session_start();
+$user = mysqli_query($db,"select * from user where email='$email' and password='$password'");
 
-if((strcasecmp($email_saya, $email) == 0)&&($password_saya==$password)){
-    $_SESSION['email'] = $email_saya;
+$cek = mysqli_num_rows($user);
+
+if($cek > 0){
+    $_SESSION['email'] = $email;
     header("location:index.php?pesan=berhasil");
 }
 else{
-    header("location:login.php?pesan=gagal");
+    header("location:login.php?pesan=gagal".$user);
 }
 ?>
