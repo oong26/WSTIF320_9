@@ -221,7 +221,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">DATA MAHASISWA</h1>
+            <h1 class="h3 mb-0 text-gray-800">Contact Us</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
@@ -233,7 +233,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Contact</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -242,69 +242,33 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <form action="berhasil.php" method="post">
-                      <div class="form-group">
-                          <input type="text"  name="nim" id="nim" class="form-control form-control-user" placeholder="NIM" required>
-                      </div>
+                  <form>
                       <div class="form-group">
                           <input type="text" name="name" id="name" class="form-control form-control-user" placeholder="Nama Anda" required>
                       </div>
                       <div class="form-group">
-                          <input type="date" name="lahir" id="lahir" class="form-control form-control-user" placeholder="Tempat Tanggal Lahir" required>
+                          <input type="text" name="subject" id="subject" class="form-control form-control-user" placeholder="Subjek Pesan Anda" required>
                       </div>
                       <div class="form-group">
-                          <select name="agama" id="agama" class="form-control form-control-user">
-                            <option value="">Pilih Agama</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Katolik">Katolik</option>
-                            <option value="Protestan">Protestan</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Buddha">Buddha</option>
-                            <option value="Konghucu">Konghucu</option>
-                          </select>
+                          <input type="text" name="email" id="email" class="form-control form-control-user" placeholder="Email Anda" required>
                       </div>
-                      <div class="form-group">
-                          <input type="text" name="username" id="username" class="form-control form-control-user" placeholder="Username  Anda" required>
-                      </div>
-                      
-                      <div class="form-group">
-                          <input type="password" name="password" id="password" class="form-control form-control-user" placeholder="Password Anda" required>
-                      </div>
-                      
-                      <button type="submit" class="btn btn-success" name="submit">SAVE</button>
-                      <br>
-
-                      <!--FUNGSI PHP-->
-
+                      <button type="submit" class="btn btn-success" name="submit">Tambah</button>
                       <?php
-                        $nim = @$_GET['nim'];
                         $name = @$_GET['name'];
-                        $lahir = @$_GET['lahir'];
-                        $agama = @$_GET['agama'];
-                        $username =@$_GET['username'];
-                        $password = @$_GET['password'];
-
-                        if($nim){
-                          echo "<strong><br><br>NIM:</strong> {$nim} <br>";
-                        }
+                        $subject = @$_GET['subject'];
+                        $email = @$_GET['email'];
                         if($name){
-                            echo "<strong>Nama:</strong> {$name} <br>";
+                            echo "<br><br><strong>Nama:</strong> {$name} <br>";
                         }
-                        if($lahir){
-                          echo "<strong>Tanggal Lahir:</strong> {$lahir} <br>";
+
+                        if($subject){
+                            echo "<strong>Subjek:</strong> {$subject} <br>";
                         }
-                        if($agama){
-                          echo "<strong>Agama:</strong> {$agama} <br>";
+
+                        if($email){
+                            echo "<strong>Email:</strong> {$email} <br>";
                         }
-                        if($username){
-                            echo "<strong>Username:</strong> {$username} <br>";
-                        }
-                        if($password){
-                          echo "<strong>Password:</strong> {$password} <br>";
-                        }
-                     
                       ?>
-                      
                   </form>
                 </div>
               </div>

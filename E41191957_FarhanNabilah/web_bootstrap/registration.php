@@ -221,7 +221,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">DATA MAHASISWA</h1>
+            <h1 class="h3 mb-0 text-gray-800">Registration</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
@@ -233,7 +233,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Registration</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -242,67 +242,72 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="get">
-                  <div class="form-group">
-                      <label for="sel1">Pilih Mahasiswa:</label>
-                      <select class="form-control" name="nim">
-                          <?php
-                          include "koneksi.php";
-                          //Perintah sql untuk menampilkan semua data pada tabel jurusan
-                          $sql="select nim,nama from tb_mahasiswa";
+                  <form>
+                      <div class="form-group">
+                          <input type="text" name="name" id="name" class="form-control form-control-user" placeholder="Nama Anda" required>
+                      </div>
+                      <div class="form-group">
+                          <input type="text" name="username" id="username" class="form-control form-control-user" placeholder="Username  Anda" required>
+                      </div>
+                      <div class="form-group">
+                          <input type="text" name="email" id="email" class="form-control form-control-user" placeholder="Email Anda" required>
+                      </div>
+                      <div class="form-group">
+                          <input type="password" name="password" id="password" class="form-control form-control-user" placeholder="Password Anda" required>
+                      </div>
+                      <div class="form-group">
+                          <input type="radio" name="jk" id="laki" value="Laki-laki"><label for="laki">Laki-laki</label>
+                          <input type="radio" name="jk" id="perempuan" value="Perempuan"><label for="perempuan">Perempuan</label>
+                      </div>
+                      <div class="form-group">
+                          <select name="agama" id="agama" class="form-control form-control-user">
+                            <option value="">Pilih Agama</option>
+                            <option value="">Islam</option>
+                            <option value="">Katolik</option>
+                            <option value="">Protestan</option>
+                            <option value="">Hindu</option>
+                            <option value="">Buddha</option>
+                            <option value="">Konghucu</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                          <textarea name="bio" id="bio" cols="30" rows="3" class="form-control form-control-user"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-success" name="submit">Tambah</button>
+                      <?php
+                        $name = @$_GET['name'];
+                        $username = @$_GET['username'];
+                        $email = @$_GET['email'];
+                        $password = @$_GET['password'];
+                        $jk = @$_GET['jk'];
+                        $agama = @$_GET['agama'];
+                        $bio = @$_GET['bio'];
+                        if($name){
+                            echo "<br><br><strong>Nama:</strong> {$name} <br>";
+                        }
 
-                          $hasil=mysqli_query($host,$sql);
-                          $no=0;
-                          while ($data = mysqli_fetch_array($hasil)) {
-                              $no++;
+                        if($username){
+                            echo "<strong>Username:</strong> {$username} <br>";
+                        }
 
-                              $ket="";
-                              if (isset($_GET['nim'])) {
-                                  $nim = trim($_GET['nim']);
+                        if($email){
+                            echo "<strong>Email:</strong> {$email} <br>";
+                        }
 
-                                  if ($nim==$data['nim'])
-                                  {
-                                      $ket="selected";
-                                  }
-                              }
-                              ?>
-                              <option <?php echo $ket; ?> value="<?php echo $data['nim'];?>"><?php echo $data['nim'];?> - <?php echo $data['nama'];?></option>
-                              <?php
-                          }
-                          ?>
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <input type="submit" class="btn btn-info" value="Pilih">
-                  </div>
-              </form>
-              <?php
+                        if($jk){
+                          echo "<strong>Jenis Kelamin:</strong> {$jk} <br>";
+                        }
 
-              if (isset($_GET['nim'])) {
-                  $nim=$_GET["nim"];
+                        if($agama){
+                          echo "<strong>Agama:</strong> {$agama} <br>";
+                        }
 
-                  $sql="select * from tb_mahasiswa where nim='$nim'";
-                  $hasil= mysqli_query($host,$sql);
-                  $data = mysqli_fetch_assoc($hasil);
-              }
-              ?>
-
-                  <div class="form-group">
-                      <label>nim:</label>
-                      <input type="text" name="nim" value="<?php echo $data['nim']; ?>" class="form-control" required />
-                  </div>
-                  <div class="form-group">
-                      <label>Nama:</label>
-                      <input type="text" name="nama" value="<?php echo $data['nama']; ?>" class="form-control"  required/>
-                  </div>
-                  <div class="form-group">
-                      <label>Tanggal Lahir:</label>
-                      <input type="date" name="ttl" value="<?php echo $data['ttl']; ?>" class="form-control" required/>
-                  </div>
-                  <div class="form-group">
-                      <label>Agama:</label>
-                      <input type="text" name="agama" value="<?php echo $data['agama']; ?>" class="form-control"required/>
-                  </div>
+                        if($bio){
+                          echo "<strong>Biografi:</strong> {$bio} <br>";
+                        }
+                      
+                      ?>
+                  </form>
                 </div>
               </div>
             </div>
