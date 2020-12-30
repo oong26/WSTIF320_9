@@ -25,7 +25,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <?php include"./sidebar.php" ?>
+  <?php include "./sidebar.php" ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -216,99 +216,106 @@
         </nav>
         <!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+      <!-- Begin page content -->
+      <div class="container-fluid">
+        
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Register</h1>
+        </div>
 
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">DATA MAHASISWA</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-          </div>
+        <!-- Content Row -->
+        <div class="row">
 
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-xl-12 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="get">
-                  <div class="form-group">
-                      <label for="sel1">Pilih Mahasiswa:</label>
-                      <select class="form-control" name="nim">
-                          <?php
-                          include "koneksi.php";
-                          //Perintah sql untuk menampilkan semua data pada tabel jurusan
-                          $sql="select nim,nama from tb_mahasiswa";
-
-                          $hasil=mysqli_query($host,$sql);
-                          $no=0;
-                          while ($data = mysqli_fetch_array($hasil)) {
-                              $no++;
-
-                              $ket="";
-                              if (isset($_GET['nim'])) {
-                                  $nim = trim($_GET['nim']);
-
-                                  if ($nim==$data['nim'])
-                                  {
-                                      $ket="selected";
-                                  }
-                              }
-                              ?>
-                              <option <?php echo $ket; ?> value="<?php echo $data['nim'];?>"><?php echo $data['nim'];?> - <?php echo $data['nama'];?></option>
-                              <?php
-                          }
-                          ?>
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <input type="submit" class="btn btn-info" value="Pilih">
-                  </div>
-              </form>
-              <?php
-
-              if (isset($_GET['nim'])) {
-                  $nim=$_GET["nim"];
-
-                  $sql="select * from tb_mahasiswa where nim='$nim'";
-                  $hasil= mysqli_query($host,$sql);
-                  $data = mysqli_fetch_assoc($hasil);
-              }
-              ?>
-
-                  <div class="form-group">
-                      <label>nim:</label>
-                      <input type="text" name="nim" value="<?php echo $data['nim']; ?>" class="form-control" required />
-                  </div>
-                  <div class="form-group">
-                      <label>Nama:</label>
-                      <input type="text" name="nama" value="<?php echo $data['nama']; ?>" class="form-control"  required/>
-                  </div>
-                  <div class="form-group">
-                      <label>Tanggal Lahir:</label>
-                      <input type="date" name="ttl" value="<?php echo $data['ttl']; ?>" class="form-control" required/>
-                  </div>
-                  <div class="form-group">
-                      <label>Agama:</label>
-                      <input type="text" name="agama" value="<?php echo $data['agama']; ?>" class="form-control"required/>
-                  </div>
+          <!-- Area chart -->
+          <div class="col-xl-12 col-lg-7">
+            <div class="card shadow mb-4">
+              <!-- Card Header Dropdown -->
+              <div class="card-header py-3 d-flex flex-row align-item-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Registration</h6>
+                <div class="dropdown no-arrow">
+                  <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                  </a>
                 </div>
               </div>
-            </div>
 
+              <div class="card-body">
+                <form action="">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" class="form-control form-control-user" placeholder="Nama Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="username" id="username" class="form-control form-control-user" placeholder="Username Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="name" class="form-control form-control-user" placeholder="Email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="id" class="form-control form-control-user" placeholder="Password Anda">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioOption" id="radioOption1" value="Laki-laki">
+                            <label class="form-check-label" for="inlineRadio1">Laki-laki</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radioOption" id="radioOption2" value="Perempuan">
+                            <label class="form-check-label" for="inlineRadio2">Perempuan</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" name="selectagama">
+                            <option value="Islam">Islam</option>
+                            <option value="Kristen">Kristen</option>
+                            <option value="Khatolik">Khatolik</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="alamat" id="controlTextArea" rows="3" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group-row">
+                        <button type="submit" class="btn btn-success" name="submit">Tambah</button>
+                    </div>
+                
+                  <?php
+                  $name = @$_GET['name'];
+                  $username = @$_GET['username'];
+                  $email = @$_GET['email'];
+                  $password = @$GET['password'];
+                  $jk = @$_GET['radioOption'];
+                  $agama = @$GET['selectAgama'];
+                  $alamat = @$GET['alamat'];
+                  if($name){
+                    echo "<br><br><strong>Nama: </strong> {$name} <br>";
+                  }
+                  
+                  if($username){
+                    echo "<strong>Username: </strong> {$username} <br>";
+                  }
+
+                  if($email){
+                    echo "<strong>Email: </strong> {$email} <br>";
+                  }
+
+                  if($jk){
+                    echo "<strong>Jenis Kelamin: </strong> {$jk} <br>";
+                  }
+
+                  if($agama){
+                    echo "<strong>Agama: </strong> {$agama} <br>";
+                  }
+
+                  if($alamat){
+                    echo "<strong>Alamat: </strong> {$alamat} <br>";
+                  }
+                  ?>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
