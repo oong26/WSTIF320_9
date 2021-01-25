@@ -51,7 +51,7 @@
   </section><!-- End Hero -->
 
   <main id="main">
-    
+
     <!-- ======= Fasilitas Section ======= -->
     <section id="fasilitas" class="counts">
       <div class="container">
@@ -153,7 +153,7 @@
                   <h4><?php echo $kitabs['judul']; ?></h4>
                   <p><?php echo $kitabs['kategori']; ?></p>
                   <div class="portfolio-links">
-                    <a href="uploaded_files/kitab/<?php echo $kitabs['cover']; ?>" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="ri-add-fill"></i></a>
+                    <a href="uploaded_files/kitab/<?php echo $kitabs['cover']; ?>" data-gall="portfolioGallery" class="venobox" title="<?= $kitabs['judul']; ?>"><i class="ri-add-fill"></i></a>
                     <a href="kitab-detail.php/<?php echo $kitabs['slug']; ?>" title="More Details"><i class="ri-links-fill"></i></a>
                   </div>
                 </div>
@@ -182,11 +182,11 @@
             <div class="member d-flex align-items-start">
               <div class="pic"><img src="uploaded_files/<?php echo $kegiatan['cover']; ?>" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4><?php echo $kegiatan['judul']; ?></h4>
+              <a href="kegiatan-detail.php/<?= $kegiatan['slug'] ?>"><h4><?php echo $kegiatan['judul']; ?></h4></a>
                 <span><?php echo $kegiatan['updated_at']; ?></span>
                 <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
                 <p>
-                  <a href="">Selengkapnya</a>
+                  <a href="kegiatan-detail.php/<?= $kegiatan['slug'] ?>">Selengkapnya</a>
                 </p>
               </div>
             </div>
@@ -252,7 +252,6 @@
             <div class="col-lg-6 pt-4 pt-lg-0">
               <p>
                 <?php echo $data['sejarah']; ?>
-
               </p>
             </div>
           </div>
